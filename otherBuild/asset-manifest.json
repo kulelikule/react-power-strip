@@ -1,0 +1,9 @@
+{
+  "files": {
+    "other.js": "/other.js",
+    "other.js.map": "/other.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.efd2e254b0a823820b40f9cf215b1ce6.js": "/precache-manifest.efd2e254b0a823820b40f9cf215b1ce6.js",
+    "service-worker.js": "/service-worker.js"
+  }
+}
