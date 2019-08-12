@@ -7,12 +7,12 @@ npm install react-power-strip -S
 ```
 
 ## 使用方法
-React组件（组件A）
+### React组件（组件A）
 ```
 import React from 'react';
 import { connect } from './PowerStrip';
 
-@connect('text') | @connect('test', document.getElementById('bbb'), { msg: '333' })
+@connect('text')
 class A extends React.Component {
   render() {
     return (
@@ -25,8 +25,34 @@ class A extends React.Component {
 
 export default A;
 ```
+如果组件A本身也是项目级别的，它自身也会渲染到某个DOM上，可以如下使用：
+```
+@connect('test', document.getElementById('App'), { msg: '我是组件A自带的属性' })
+class A extends React.Component {
+  render() {
+    return (
+      <div>
+        { this.props.msg } // 这里的props就是params
+      </div>
+    );
+  }
+}
 
-React项目（项目B）
+export default A;
+```
+------
+### React项目（项目B）
+在页面中需要在js加载前加入配置项
+```
+<script type="text/javascript">
+  window.powerStripConfig = {
+    active: true,
+    exclude: [],
+  };
+</script>
+```
+
+jsx中的使用如下，其中src也可以不写，直接以script标签的形式引入：
 ```
 import React from 'react';
 import { Slot } from './PowerStrip';
