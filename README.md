@@ -12,7 +12,7 @@ React组件（组件A）
 import React from 'react';
 import { connect } from './PowerStrip';
 
-@connect('text')
+@connect('text') | @connect('test', document.getElementById('bbb'), { msg: '333' })
 class A extends React.Component {
   render() {
     return (

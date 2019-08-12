@@ -13,4 +13,4 @@ class Demo extends React.Component {
   }
 }
 
-export default connect('test')(Demo);
+export default connect('test', document.getElementById('bbb'), { aaa: '333' })(Demo);

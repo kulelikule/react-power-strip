@@ -39,7 +39,7 @@ initDistributionBox();
    * @param { string } id 需要渲染的组件的唯一标识
    * @param { element } component 需要渲染的组件
    */
-const connect = (id) => (component) => {
+const connect = (id, containerDom, componentProps, children) => (component) => {
   const { powerStripConfig } = window;
   const { active, exclude } = powerStripConfig || {};
   // 以下情况组件不接入接线板
@@ -47,6 +47,9 @@ const connect = (id) => (component) => {
   // 配置接线板后，没有激活
   // 接线板激活后，该组件被排除
   if (!powerStripConfig || !active || (exclude instanceof Array && exclude.some(item => item === id))) {
+    if (containerDom) {
+      render(createElement(component, componentProps, children), containerDom);
+    }
     return component;
   }
   
