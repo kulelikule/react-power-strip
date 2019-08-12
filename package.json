@@ -1,6 +1,6 @@
 {
   "name": "react-power-strip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/PowerStrip.js",
   "dependencies": {
     "prop-types": "^15.7.2",
