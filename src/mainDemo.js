@@ -28,7 +28,12 @@ class Demo extends React.Component {
     const { params } = this.state;
     return (
       <div>
-        <Slot id="test" params={params} src="http://127.0.0.1:8080/other.js"/>
+        <Slot
+          id="test"
+          params={params}
+          jsUrl="http://127.0.0.1:8080/other.js"
+          cssUrl="http://127.0.0.1:8080/other.css"
+        />
       </div>
     );
   }

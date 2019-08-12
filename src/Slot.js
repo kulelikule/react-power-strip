@@ -6,12 +6,14 @@ class Slot extends PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     params: PropTypes.object,
-    src: PropTypes.string || null,
+    jsUrl: PropTypes.string || null,
+    cssUrl: PropTypes.string || null,
   };
 
   static defaultProps = {
     params: {},
-    src: null,
+    jsUrl: null,
+    cssUrl: null,
   };
 
   constructor() {
@@ -22,11 +24,18 @@ class Slot extends PureComponent {
   async componentDidMount() {
     const { _powerStrip } = window;
     const { firstPowerOn } = _powerStrip;
-    const { src } = this.props;
-    if (src) {
+    const { jsUrl, cssUrl } = this.props;
+    if (cssUrl) {
+      var link = document.createElement('link');
+      link.type='text/css';
+      link.rel = 'stylesheet';
+      link.href = cssUrl;
+      document.head.appendChild(link);
+    }
+    if (jsUrl) {
       var script = document.createElement('script');
-      script.setAttribute("type","text/javascript");
-      script.src = src;
+      script.type = 'text/javascript';
+      script.src = jsUrl;
       document.body.appendChild(script);
       await new Promise((resolve, reject) => {
         script.onload = () => resolve();

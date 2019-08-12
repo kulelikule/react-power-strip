@@ -1,9 +1,11 @@
 {
   "files": {
+    "other.css": "/other.css",
     "other.js": "/other.js",
     "other.js.map": "/other.js.map",
     "index.html": "/index.html",
-    "precache-manifest.000419712b4a771f2671a261a8b000e7.js": "/precache-manifest.000419712b4a771f2671a261a8b000e7.js",
+    "other.css.map": "/other.css.map",
+    "precache-manifest.5d9d2d13e509fe118c5ef82bc93145cb.js": "/precache-manifest.5d9d2d13e509fe118c5ef82bc93145cb.js",
     "service-worker.js": "/service-worker.js"
   }
 }

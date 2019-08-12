@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from './PowerStrip';
+import './otherDemo.css';
 
 class Demo extends React.Component {
 
   render() {
     console.log(this.props.aaa );
     return (
-      <div>
+      <div className="other-demo">
         { this.props.aaa }
       </div>
     );
