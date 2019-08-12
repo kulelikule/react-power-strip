@@ -12,6 +12,7 @@ React组件（组件A）
 import React from 'react';
 import { connect } from './PowerStrip';
 
+@connect('text')
 class A extends React.Component {
   render() {
     return (
@@ -22,7 +23,7 @@ class A extends React.Component {
   }
 }
 
-export default connect('test')(A);
+export default A;
 ```
 
 React项目（项目B）

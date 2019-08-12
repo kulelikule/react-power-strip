@@ -20,8 +20,8 @@ class Slot extends PureComponent {
   }
 
   async componentDidMount() {
-    const { _distributionBox } = window;
-    const { firstPowerOn } = _distributionBox;
+    const { _powerStrip } = window;
+    const { firstPowerOn } = _powerStrip;
     const { src } = this.props;
     if (src) {
       var script = document.createElement('script');
@@ -40,8 +40,8 @@ class Slot extends PureComponent {
 
   componentDidUpdate() {
     if (this.loaded) {
-      const { _distributionBox } = window;
-      const { powerOn } = _distributionBox;
+      const { _powerStrip } = window;
+      const { powerOn } = _powerStrip;
       const { id, params } = this.props;
       powerOn(id, params);
     }
