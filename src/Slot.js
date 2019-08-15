@@ -6,8 +6,14 @@ class Slot extends PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     params: PropTypes.object,
-    jsUrl: PropTypes.string || null,
-    cssUrl: PropTypes.string || null,
+    jsUrl: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.oneOf([null]),
+    ]),
+    cssUrl: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.oneOf([null]),
+    ]),
   };
 
   static defaultProps = {
