@@ -25,7 +25,7 @@ class A extends React.Component {
 
 export default A;
 ```
-如果组件A本身也是项目级别的，它自身也会渲染到某个DOM上，可以如下使用：
+如果组件A本身也是页面级别的，它自身也会渲染到某个DOM上，可以如下使用：
 ```
 @connect('test', document.getElementById('App'), { msg: '我是组件A自带的属性' })
 class A extends React.Component {
