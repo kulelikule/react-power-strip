@@ -31,8 +31,14 @@ class Demo extends React.Component {
         <Slot
           id="test"
           params={params}
-          jsUrl="http://127.0.0.1:8080/other.js"
-          cssUrl="http://127.0.0.1:8080/other.css"
+          jsUrl="http://127.0.0.1:8081/other.js"
+          cssUrl="http://127.0.0.1:8081/other.css"
+        />
+        <Slot
+          id="test"
+          params={{ aaa: 5 }}
+          jsUrl="http://127.0.0.1:8081/other.js"
+          cssUrl="http://127.0.0.1:8081/other.css"
         />
       </div>
     );

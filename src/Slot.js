@@ -22,43 +22,39 @@ class Slot extends PureComponent {
     cssUrl: null,
   };
 
-  constructor() {
-    super();
-    this.loaded = false;
-  }
-
   async componentDidMount() {
     const { _powerStrip } = window;
-    const { firstPowerOn } = _powerStrip;
-    const { jsUrl, cssUrl } = this.props;
-    if (cssUrl) {
-      var link = document.createElement('link');
-      link.type='text/css';
-      link.rel = 'stylesheet';
-      link.href = cssUrl;
-      document.head.appendChild(link);
+    const { firstPowerOn, wireBundles } = _powerStrip;
+    const { jsUrl, cssUrl, id: componentId, params } = this.props;
+    // 如果当componentId已经存在时则不重复加载脚本和样式
+    if (!wireBundles[componentId]) {
+      if (cssUrl) {
+        var link = document.createElement('link');
+        link.type='text/css';
+        link.rel = 'stylesheet';
+        link.href = cssUrl;
+        document.head.appendChild(link);
+      }
+      if (jsUrl) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = jsUrl;
+        document.body.appendChild(script);
+        await new Promise((resolve, reject) => {
+          script.onload = () => resolve();
+          script.onerror = () => reject();
+        });
+      }
     }
-    if (jsUrl) {
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = jsUrl;
-      document.body.appendChild(script);
-      await new Promise((resolve, reject) => {
-        script.onload = () => resolve();
-        script.onerror = () => reject();
-      });
-    }
-    this.loaded = true;
-    const { id, params } = this.props;
-    firstPowerOn(id, params, this.el);
+    this.uniqueId = firstPowerOn(componentId, params, this.el);
   }
 
   componentDidUpdate() {
-    if (this.loaded) {
+    if (this.uniqueId) {
       const { _powerStrip } = window;
       const { powerOn } = _powerStrip;
-      const { id, params } = this.props;
-      powerOn(id, params);
+      const { id: componentId, params } = this.props;
+      powerOn(componentId, this.uniqueId, params);
     }
   }
 

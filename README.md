@@ -64,7 +64,7 @@ class B extends React.Component {
     };
     return (
       <div>
-        <Slot id="test" params={params} src="http://127.0.0.1:8080/other.js"/>
+        <Slot id="test" params={params} srcUrl="http://127.0.0.1:8080/other.js"/>
       </div>
     );
   }
