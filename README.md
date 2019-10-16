@@ -12,7 +12,7 @@ npm install react-power-strip -S
 import React from 'react';
 import { connect } from './PowerStrip';
 
-@connect('text')
+@connect('test')
 class A extends React.Component {
   render() {
     return (
